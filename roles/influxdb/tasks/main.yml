@@ -1,0 +1,20 @@
+---
+
+
+- name: influxdb package
+  apt:
+    name: influxdb
+    state: present
+
+- name: Additional influxdb package
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-influxdb
+    - python3-influxdb
+
+- name: influxdb config
+  template:
+    src: etc/influxdb/influxdb.conf.j2
+    dest: /etc/influxdb/influxdb.conf
