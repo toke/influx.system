@@ -1,0 +1,10 @@
+---
+
+
+- name: Create database
+  influxdb_database:
+    hostname: "127.0.0.1"
+    database_name: "telegraf"
+    username: admin
+    password: "{{ influxdb.pass.admin }}"
+    state: present
